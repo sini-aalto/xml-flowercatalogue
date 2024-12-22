@@ -10,6 +10,6 @@ with open(schemafile, "r") as s:
 with open(xmlfile, "r") as file:
     tree = etree.parse(file)
 
-print("Validating....")
+print("Validating...")
 schema.validate(tree)
 print("Validation successfull.")

@@ -15,8 +15,7 @@ def search_items(interest):
     else:
         return sorted([(plant.find("COMMON").text, plant.find(interest.upper()).text) for plant in all_plants])
 
-
-if __name__ == "__main__":
+def main ():
     print("Welcome to plant catalogue!")
     interest = ""
     while interest.lower() != "exit":
@@ -38,3 +37,8 @@ if __name__ == "__main__":
                 else:
                     print(q, sep="/n")
     print("Thanks for visiting!")
+
+
+
+if __name__ == "__main__":
+    main()
