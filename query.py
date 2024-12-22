@@ -1,22 +1,9 @@
 import xml.etree.ElementTree as ET
-from lxml.etree import XMLSchema
-
 
 xmlfile = "plant_catalog.xml"
-schemafile = "schema.xsd"
-
-with open(schemafile, "r") as s:
-    doc = ET.parse(s)
-    schema = XMLSchema(doc)
 
 with open(xmlfile, "r") as file:
     tree = ET.parse(file)
-
-
-# Check XML against the XSD
-print("Validating....")
-schema.validate(tree)
-print("Validation successfull.")
 
 all_plants = tree.findall("PLANT")
 all_tags = list(set([elem.tag.lower() for elem in tree.findall("PLANT/*")]))
