@@ -7,6 +7,14 @@ with open(filepath, "r") as file:
 all_plants = tree.findall("PLANT")
 all_tags = list(set([elem.tag.lower() for elem in tree.findall("PLANT/*")]))
 
+# All plants should have the same subelements ['botanical', 'price', 'zone', 'availability', 'common', 'light']
+for plant in all_plants:
+    plant_elems = plant.findall("*")
+    plant_tags = [name.tag.lower() for name in plant_elems]
+    for t in all_tags:
+        if t not in plant_tags:
+            raise ValueError("Plant is missing tags.")
+
 def search_items(interest):
     if interest.upper() == "COMMON":
         return sorted([plant.find("COMMON").text for plant in all_plants])
