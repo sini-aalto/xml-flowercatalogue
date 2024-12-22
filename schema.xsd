@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<!-- definition of simple elements -->
+<xs:element name="COMMON" type="xs:string"></xs:element>
+<xs:element name="BOTANICAL" type="xs:string"></xs:element>
+<xs:element name="ZONE" type="xs:positiveInteger"></xs:element>
+<xs:element name="LIGHT" type="xs:string"></xs:element>
+<xs:element name="PRICE" type="xs:string"></xs:element>
+<xs:element name="AVAILABILITY" type="xs:nonNegativeInteger"></xs:element>
+
+<!-- definition of attributes-->
+<xs:attribute name="catalog_id" type="xs:integer"></xs:attribute>
+
+<!-- definition of complex elements-->
+<xs:element name="CATALOG">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="PLANT" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute ref="catalog_id" use="required"/>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="PLANT">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="COMMON" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="BOTANICAL" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="ZONE" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="LIGHT" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="PRICE" minOccurs="1" maxOccurs="1"/>
+            <xs:element ref="AVAILABILITY" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+</xs:schema>

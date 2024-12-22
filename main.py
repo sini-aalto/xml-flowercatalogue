@@ -1,19 +1,26 @@
 import xml.etree.ElementTree as ET
-filepath = "plant_catalog.xml"
+from lxml.etree import XMLSchema
 
 
-with open(filepath, "r") as file:
+xmlfile = "plant_catalog.xml"
+schemafile = "schema.xsd"
+
+with open(schemafile, "r") as s:
+    doc = ET.parse(s)
+    schema = XMLSchema(doc)
+
+with open(xmlfile, "r") as file:
     tree = ET.parse(file)
+
+
+# Check XML against the XSD
+print("Validating....")
+schema.validate(tree)
+print("Validation successfull.")
+
 all_plants = tree.findall("PLANT")
 all_tags = list(set([elem.tag.lower() for elem in tree.findall("PLANT/*")]))
 
-# All plants should have the same subelements ['botanical', 'price', 'zone', 'availability', 'common', 'light']
-for plant in all_plants:
-    plant_elems = plant.findall("*")
-    plant_tags = [name.tag.lower() for name in plant_elems]
-    for t in all_tags:
-        if t not in plant_tags:
-            raise ValueError("Plant is missing tags.")
 
 def search_items(interest):
     if interest.upper() == "COMMON":
@@ -22,13 +29,14 @@ def search_items(interest):
         return sorted([(plant.find("COMMON").text, plant.find(interest.upper()).text) for plant in all_plants])
 
 
-
 if __name__ == "__main__":
     print("Welcome to plant catalogue!")
     interest = ""
     while interest.lower() != "exit":
-        print(f"You can exit via typing 'exit', or search with the following keywords: {all_tags}")
-        interest = input("What do you want to know about the plants in catalogue? ")
+        print(f"You can exit via typing 'exit', or search with the following keywords: {
+              all_tags}")
+        interest = input(
+            "What do you want to know about the plants in catalogue? ")
         if interest.lower() == "exit":
             break
         result = search_items(interest)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CATALOG xmlns:COPIED = "https://www.w3schools.com/xml/plant_catalog.xml">
+<CATALOG catalog_id="20241222">
   <PLANT>
     <COMMON>Bloodroot</COMMON>
     <BOTANICAL>Sanguinaria canadensis</BOTANICAL>
