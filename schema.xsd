@@ -10,6 +10,7 @@
 
 <!-- definition of attributes-->
 <xs:attribute name="catalog_id" type="xs:integer"></xs:attribute>
+<xs:attribute name="chosen" ></xs:attribute>
 
 <!-- definition of complex elements-->
 <xs:element name="CATALOG">
@@ -31,6 +32,7 @@
             <xs:element ref="PRICE" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="AVAILABILITY" minOccurs="1" maxOccurs="1"/>
         </xs:all>
+        <xs:attribute ref="chosen"/>
     </xs:complexType>
 </xs:element>
 
