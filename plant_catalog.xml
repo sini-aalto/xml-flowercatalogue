@@ -264,7 +264,7 @@
     <PRICE>$7.89</PRICE>
     <AVAILABILITY>032799</AVAILABILITY>
   </PLANT>
-  <PLANT>
+  <PLANT find_this="this">
     <COMMON>Shooting Star</COMMON>
     <BOTANICAL>Dodecatheon</BOTANICAL>
     <ZONE>Annual</ZONE>
