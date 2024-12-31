@@ -6,12 +6,16 @@ with open(xmlfile, "r") as file:
     tree = ET.parse(file)
 
 all_plants = tree.findall("PLANT")
+chosen_plants = tree.findall("PLANT[@chosen='yes']")
 all_tags = list(set([elem.tag.lower() for elem in tree.findall("PLANT/*")]))
+all_tags.append("chosen")
 
 
 def search_items(interest):
     if interest.upper() == "COMMON":
         return sorted([plant.find("COMMON").text for plant in all_plants])
+    elif interest.lower() == "chosen":
+        return sorted([plant.find("COMMON").text for plant in chosen_plants])
     else:
         return sorted([(plant.find("COMMON").text, plant.find(interest.upper()).text) for plant in all_plants])
 
@@ -21,8 +25,7 @@ def main ():
     while interest.lower() != "exit":
         print(f"You can exit via typing 'exit', or search with the following keywords: {
               all_tags}")
-        interest = input(
-            "What do you want to know about the plants in catalogue? ")
+        interest = input("What do you want to know about the plants in catalogue? ")
         if interest.lower() == "exit":
             break
         result = search_items(interest)
