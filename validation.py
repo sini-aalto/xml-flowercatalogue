@@ -11,5 +11,8 @@ with open(xmlfile, "r") as file:
     tree = etree.parse(file)
 
 print("Validating...")
-schema.validate(tree)
-print("Validation successfull.")
+result = schema.validate(tree)
+if result:
+    print("Validation successfull.")
+else:
+    print("XML document is not valid.")

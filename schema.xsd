@@ -3,7 +3,7 @@
 <!-- definition of simple elements -->
 <xs:element name="COMMON" type="xs:string"></xs:element>
 <xs:element name="BOTANICAL" type="xs:string"></xs:element>
-<xs:element name="ZONE" type="xs:positiveInteger"></xs:element>
+<xs:element name="ZONE" type="xs:string"></xs:element>
 <xs:element name="LIGHT" type="xs:string"></xs:element>
 <xs:element name="PRICE" type="xs:string"></xs:element>
 <xs:element name="AVAILABILITY" type="xs:nonNegativeInteger"></xs:element>
@@ -23,14 +23,14 @@
 
 <xs:element name="PLANT">
     <xs:complexType>
-        <xs:sequence>
+        <xs:all>
             <xs:element ref="COMMON" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="BOTANICAL" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="ZONE" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="LIGHT" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="PRICE" minOccurs="1" maxOccurs="1"/>
             <xs:element ref="AVAILABILITY" minOccurs="1" maxOccurs="1"/>
-        </xs:sequence>
+        </xs:all>
     </xs:complexType>
 </xs:element>
 

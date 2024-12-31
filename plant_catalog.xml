@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CATALOG catalog_id="20241222">
   <PLANT>
-    <COMMON>Bloodroot</COMMON>
     <BOTANICAL>Sanguinaria canadensis</BOTANICAL>
+    <COMMON>Bloodroot</COMMON>
     <ZONE>4</ZONE>
     <LIGHT>Mostly Shady</LIGHT>
     <PRICE>$2.44</PRICE>
